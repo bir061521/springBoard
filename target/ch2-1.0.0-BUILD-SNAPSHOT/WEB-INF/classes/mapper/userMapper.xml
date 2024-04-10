@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fastcampus.ch2.dao.UserMapper">
+    <insert id ="insertUser" parameterType="UserDto">
+        INSERT INTO user(id, pwd, name, email, birth, sns)
+        VALUES (#{id},#{pwd},#{name},#{email},#{birth},#{sns});
+    </insert>
+
+    <select id="selectUser" parameterType="String" resultType="UserDto">
+        SELECT id
+        FROM user
+        WHERE id =#{id}
+    </select>
+
+    <update id="updateUser" parameterType="UserDto">
+        UPDATE user
+        SET pwd = #{pwd}, email= #{email},birth=#{birth},sns=#{sns}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="UserDto">
+        DELETE FROM user where id=#{id};
+    </delete>
+</mapper>
