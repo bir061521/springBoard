@@ -5,7 +5,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class CommentDaoImpl implements CommentDao {
@@ -39,9 +41,14 @@ public class CommentDaoImpl implements CommentDao {
     }
 
     @Override
-    public int delete(Integer cno, String id)throws Exception{
-        return session.delete(namespace +"delete");
+    public int delete(Integer cno, String id) throws Exception {
+        Map<String,Object> params= new HashMap<>();
+        params.put("cno",cno);
+        params.put("id",id);
+        return session.delete(namespace + "delete", params);
     }
+
+
 
     @Override
     public CommentDto select(Integer cno)throws Exception{

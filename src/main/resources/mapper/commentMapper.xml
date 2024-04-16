@@ -16,7 +16,7 @@
             (bno,id,parent_cno,content,regDate)
         VALUES (#{bno},#{id},#{parent_cno},#{content},now())
     </insert>
-    <delete id="delete" parameterType="CommentDto">
+    <delete id="delete" parameterType="map">
         DELETE
         FROM comment
         WHERE cno = #{cno} AND id = #{id};

@@ -86,7 +86,20 @@ public class CommentDaoImplTest {
     }
 
     @Test
-    public void delete() {
+    public void delete() throws Exception {
+//        CommentDto commentDto = new CommentDto();
+//        commentDto.setCno(25);
+//        commentDto.setBno(1037);
+//        commentDto.setId("asdf");
+////        commentDto.setParent_cno();
+//        commentDto.setContent("대댓글");
+//        commentDao.insert(commentDto);
+//        assertNotNull(commentDto);
+
+        commentDao.delete(27,"asdf");
+        commentDao.delete(23,"asdf");
+
+
     }
 
     @Test

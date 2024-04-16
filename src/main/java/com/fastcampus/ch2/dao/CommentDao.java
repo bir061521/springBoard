@@ -3,6 +3,7 @@ package com.fastcampus.ch2.dao;
 import com.fastcampus.ch2.dto.CommentDto;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CommentDao {
     String now() throws Exception;
@@ -13,7 +14,7 @@ public interface CommentDao {
 
     int insert(CommentDto commentDto) throws Exception;
 
-    int delete(Integer cno, String id) throws Exception;
+    int  delete(Integer cno, String id) throws Exception;
 
     CommentDto select(Integer cno) throws Exception;
 
