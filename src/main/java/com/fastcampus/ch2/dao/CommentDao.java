@@ -18,7 +18,7 @@ public interface CommentDao {
 
     CommentDto select(Integer cno) throws Exception;
 
-    List<CommentDto> selectAll(Integer bno) throws Exception;
+    List<CommentDto> selectAll(Integer bno,CommentDto commentDto) throws Exception;
 
     int update(CommentDto commentDto) throws Exception;
 }

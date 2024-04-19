@@ -8,8 +8,12 @@ import org.springframework.cglib.core.Local;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.Iterator;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -103,14 +107,57 @@ public class CommentDaoImplTest {
     }
 
     @Test
-    public void select() {
+    public void select() throws Exception {
+        CommentDto commentDto = new CommentDto();
+        commentDto.setBno(1037);
+        commentDto.setId("asdf");
+        commentDto.setContent("댓글셀렉트 테스트");
+        commentDao.insert(commentDto);
+        assertNotNull(commentDto);
+
+        commentDao.select(commentDto.getCno());
+        commentDao.select(30);
     }
 
     @Test
-    public void selectAll() {
+    public void selectAll() throws Exception {
+        CommentDto commentDto = new CommentDto();
+        commentDto.setBno(1037);
+        commentDto.setId("asdf");
+        commentDto.setContent("댓글셀렉트올");
+        List result = commentDao.selectAll(1037,commentDto);
+        Iterator it = result.iterator();
+        while(it.hasNext()){
+            System.out.println(it.next().toString());
+        }
+
+
     }
 
     @Test
-    public void update() {
+    public void update() throws Exception {
+        CommentDto commentDto = new CommentDto();
+
+//        commentDto.setBno(1037);
+//        commentDto.setId("asdf");
+//        commentDto.setContent("댓글삽입");
+//
+//
+//        commentDao.insert(commentDto);
+//
+//        assertNotNull(commentDto);
+
+
+       commentDto.setId("asdf");
+       commentDto.setCno(33);
+
+       commentDto.setContent("댓글업데이트후");
+       commentDto.setRegDate(LocalDateTime.now());
+
+        commentDao.update(commentDto);
+
+
+        assertEquals("댓글업데이트후",commentDto.getContent());
+
     }
 }

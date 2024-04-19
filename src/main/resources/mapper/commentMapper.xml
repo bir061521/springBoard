@@ -34,6 +34,6 @@
     </select>
     <update id = "update" parameterType="CommentDto">
         UPDATE comment
-        SET content = #{contet}, regDate = now() WHERE id =#{id} and cno = #{cno};
+        SET content = #{content}, regDate = now() WHERE id =#{id} and cno = #{cno};
     </update>
 </mapper>
